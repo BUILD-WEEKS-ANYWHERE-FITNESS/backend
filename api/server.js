@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 require('dotenv').config()
 
-//routes
+//ROUTES
 const authRouterInstructor = require('../auth/i-auth-router.js')
 const authRouterClient = require('../auth/c-auth-router.js')
 

@@ -8,10 +8,9 @@ const Clients = require('../helpers/client-model.js')
 
 router.post('/register', (req,res) => {
     let user = req.body
-    console.log('USER', user)
+    console.log('USER as req.body', user)
     user.password = bcrypt.hashSync(user.password, 10)
     if(user && user.username && user.password) {
-        console.log('USER', user)
         Clients.add(user)
             .then(user => {
                 console.log('USER', user)
