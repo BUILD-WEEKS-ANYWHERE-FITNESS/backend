@@ -58,7 +58,7 @@ exports.up = function(knex) {
     })
     .createTable('punchpass', tbl => {
         tbl.increments()
-        tbl.string('punchpass').notNullable()
+        tbl.integer('passes').notNullable()
         tbl
             .integer('instructor_id')
             .notNullable()
