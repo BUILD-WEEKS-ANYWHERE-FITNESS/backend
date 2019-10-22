@@ -71,5 +71,10 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  
+  return schema.knex
+    .dropTableIfExists('punchpass')
+    .dropTableIfExists('enrolled')
+    .dropTableIfExists('classes')
+    .dropTableIfExists('instructors')
+    .dropTableIfExists('clients')
 };
