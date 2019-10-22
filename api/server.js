@@ -4,7 +4,9 @@ const helmet = require('helmet');
 require('dotenv').config()
 
 //routes
-const authRouter;
+const authRouter = require('../auth/auth-router.js')
+const clientRouter = require('../clients/clients-router.js')
+const instructorRouter = require('../instructors/instructors-router.js')
 
 const server = express();
 
