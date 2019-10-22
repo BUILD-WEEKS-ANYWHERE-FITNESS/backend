@@ -13,7 +13,7 @@ function getAll(){
 }
 
 async function add(instructor) {
-    const [id] = await db('instructors').insert(instructor);
+    const [id] = await db('instructors').insert(instructor, 'id');
     return findById(id);
 }
 
@@ -27,3 +27,4 @@ function findById(id) {
 function findBy(filter){
     return db('instructors').where(filter).first();
 }
+

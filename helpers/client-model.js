@@ -13,7 +13,7 @@ function getAll(){
 }
 
 async function add(client) {
-    const [id] = await db('clients').insert(client);
+    const [id] = await db('clients').insert(client, 'id');
     return findById(id);
 }
 

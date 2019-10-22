@@ -13,7 +13,7 @@ function getAll(){
 }
 
 async function add(newClass) {
-    const [id] = await db('classes').insert(newClass);
+    const [id] = await db('classes').insert(newClass, 'id');
     return findById(id);
 }
 
