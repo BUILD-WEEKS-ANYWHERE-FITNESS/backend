@@ -9,7 +9,7 @@ exports.up = function(knex) {
         tbl
             .string('password').notNullable()
         tbl
-            .boolean('isInstructor').defaultTo(false)
+            .boolean('isInstructor').defaultTo(false) 
     })
     .createTable('instructors', tbl => {
         tbl.increments()
@@ -79,7 +79,7 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return schema.knex
+  return knex.schema
     .dropTableIfExists('punchpass')
     .dropTableIfExists('enrolled')
     .dropTableIfExists('classes')
