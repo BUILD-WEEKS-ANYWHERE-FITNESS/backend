@@ -54,7 +54,7 @@ exports.up = function(knex) {
             .inTable('classes')
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
-        tbl.unique(['user_id', 'class_id'])
+        tbl.unique(['client_id', 'class_id'])
     })
     .createTable('punchpass', tbl => {
         tbl.increments()
