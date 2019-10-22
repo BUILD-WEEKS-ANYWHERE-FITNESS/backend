@@ -6,13 +6,13 @@ const Instructors = require('../helpers/instructor-model.js')
 
 // const restricted = require('../middleware/restricted-middleware.js')
 
-
 router.post('/register', (req,res) => {
     let user = req.body
     user.password = bcrypt.hashSync(user.password, 10)
-    if(user && user.name && user.password) {
+    if(user && user.username && user.password) {
         Instructors.add(user)
             .then(user => {
+                console.log('USER I', user)
                 const token = generateToken(user);
                 user.password = undefined;
                 user.token = token;

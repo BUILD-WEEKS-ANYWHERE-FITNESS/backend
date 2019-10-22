@@ -8,10 +8,13 @@ const Clients = require('../helpers/client-model.js')
 
 router.post('/register', (req,res) => {
     let user = req.body
+    console.log('USER', user)
     user.password = bcrypt.hashSync(user.password, 10)
-    if(user && user.name && user.password) {
+    if(user && user.username && user.password) {
+        console.log('USER', user)
         Clients.add(user)
             .then(user => {
+                console.log('USER', user)
                 const token = generateToken(user);
                 user.password = undefined;
                 user.token = token;

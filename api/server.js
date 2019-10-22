@@ -6,6 +6,7 @@ require('dotenv').config()
 //routes
 const authRouterInstructor = require('../auth/i-auth-router.js')
 const authRouterClient = require('../auth/c-auth-router.js')
+
 const clientRouter = require('../routes/clients-router.js')
 const instructorRouter = require('../routes/instructors-router.js')
 const classesRouter = require('../routes/classes-router.js')
@@ -16,8 +17,9 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use('/api/auth/instructor', authRouterInstructor)
-server.use('api/auth/client', authRouterClient)
+server.use('/api/auth/instructors', authRouterInstructor)
+server.use('/api/auth/clients', authRouterClient)
+
 server.use('/api/clients', clientRouter)
 server.use('/api/instructors', instructorRouter)
 server.use('/api/classes', classesRouter)
