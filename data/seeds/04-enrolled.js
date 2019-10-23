@@ -2,7 +2,7 @@
 exports.seed = function(knex) {
  
       // Inserts seed entries
-      return knex('table_name').insert([
+      return knex('enrolled').insert([
         {client_id: 1, class_id: 1},
         {client_id: 2, class_id: 1},
         {client_id: 3, class_id: 1},
