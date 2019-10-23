@@ -13,9 +13,9 @@ router.post('/register', (req,res) => {
         Instructors.add(user)
             .then(user => {
                 console.log('USER I', user)
-                const token = generateToken(user);
-                user.password = undefined;
-                user.token = token;
+                // const token = generateToken(user);
+                // user.password = undefined;
+                // user.token = token;
                 res.status(201).json(user);
               })
             .catch(error => {
