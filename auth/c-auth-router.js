@@ -14,9 +14,9 @@ router.post('/register', (req,res) => {
         Clients.add(user)
             .then(user => {
                 console.log('USER', user)
-                const token = generateToken(user);
-                user.password = undefined;
-                user.token = token;
+                // const token = generateToken(user);
+                // user.password = undefined;
+                // user.token = token;
                 res.status(201).json(user);
               })
             .catch(error => {
