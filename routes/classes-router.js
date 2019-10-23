@@ -17,6 +17,18 @@ router.get('/', (req,res) => {
         })
 })
 
+router.post('/', (req,res) => {
+    postClass = req.body
+    Classes.add(postClass)
+        .then(newClass => {
+            res.status(201).json(newClass)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({error: `Error adding a new class`});
+        })
+})
+
 
 
 
