@@ -21,32 +21,10 @@ module.exports = {
     },
   },
 
-  staging: {
-    client: 'pg',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    useNullAsDefault: true,
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      directory: './data/migrations',
-    },
-    seeds: {
-      directory: './data/seeds'
-    }
-  },
 
   production: {
     client: 'pg',
-    connection: {
-      dbConnection
-    },
-    useNullAsDefault: true,
+    connection: dbConnection,
     pool: {
       min: 2,
       max: 10
