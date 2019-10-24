@@ -35,7 +35,7 @@ router.post('/login', (req,res) => {
             .then(user => {
                 if(user && bcrypt.compareSync(password, user.password)){
                     const token = generateToken(user);
-                    user.password = undefined;
+                    // user.password = undefined;
                     user.token = token;
                     res.status(200).json(user);
                 }
