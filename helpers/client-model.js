@@ -20,11 +20,11 @@ function getClasses(){
 
 async function add(client) {
     const [id] = await db('clients').insert(client, 'id');
-    return findById(id);
+    return findByClientId(id);
 }
 
 function findByClientId(id) {
-    return getClasses().where({  })
+    return db('clients').where({ id })
 }
 
 function findBy(filter){

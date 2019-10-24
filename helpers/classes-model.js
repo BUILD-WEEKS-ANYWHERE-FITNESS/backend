@@ -30,6 +30,8 @@ async function add(newClass) {
     return findById(id);
 }
 
+//new add --> insert
+
 
 function findById(id) {
     return db('classes')
@@ -38,9 +40,9 @@ function findById(id) {
       .first();
 }
 
-//new findById 47:28
+//new findById 47:28 ~~~~
 function findClass(id) {
-    return getAvailable().where( {"classes.id": id} )
+    return Enrolled.clientsEnrolled().where( {"classes.id": id} )
 }
 
 function findBy(filter){

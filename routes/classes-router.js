@@ -41,8 +41,21 @@ router.get('/enrollment', (req,res) => {
     })
 })
 
+router.get('/e', (req,res) => {
+    Enrolled.classwithClients()
+    .then(c => {
+        res.status(201).json(c)
+    })
+    .catch(error => {
+        console.log(error)
+        res.status(500).json({error: `Error getting clients for each class`});
+    })
+})
+
+
+
 router.post('/newclass', (req,res) => {
-    
+
 })
 
 

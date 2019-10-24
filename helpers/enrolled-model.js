@@ -1,7 +1,8 @@
 const db = require('../data/dbConfig.js')
 
 module.exports = {
-    clientsEnrolled
+    clientsEnrolled,
+    classwithClients
 }
 
 function clientsEnrolled(){
@@ -12,5 +13,15 @@ function clientsEnrolled(){
         .join('instructors', 'classes.instructor_id', 'instructors.id')
         .count('client_id as atendees')
         .groupBy('class_id')
+}
+
+function classwithClients() {
+    return db('classes')
+    .select('classes.id', 'instructors.username as instructor', 'name', 'type', 'start_time', 'duration', 'intensity', 'location', 'max_size')
+    .join('enrolled', 'enrolled.class_id', 'classes.id')
+    .leftJoin('instructors', 'classes.instructor_id', 'instructors.id')
+    .join('clients', 'clients.id', 'enrolled.client_id')
+    .count('client_id as clients_attending')
+    .groupBy('class_id')
 }
 
