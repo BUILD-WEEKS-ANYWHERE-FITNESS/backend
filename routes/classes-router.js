@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const Classes = require('../helpers/classes-model.js')
-
+const Enrolled = require('../helpers/enrolled-model.js')
 
 
 router.get('/', (req,res) => {
@@ -17,16 +17,6 @@ router.get('/', (req,res) => {
         })
 })
 
-router.get('/available', (req,res) => {
-    Classes.getAvailable()
-    .then(allClasses => {
-        res.status(200).json(allClasses)
-    })
-    .catch(error => {
-        console.log(error)
-        res.status(500).json({error: `You are not allowed to see this content`});
-    })
-})
 
 router.post('/', (req,res) => {
     postClass = req.body
@@ -38,6 +28,21 @@ router.post('/', (req,res) => {
             console.log(error)
             res.status(500).json({error: `Error adding a new class`});
         })
+})
+
+router.get('/enrollment', (req,res) => {
+    Enrolled.clientsEnrolled()
+    .then(c => {
+        res.status(201).json(c)
+    })
+    .catch(error => {
+        console.log(error)
+        res.status(500).json({error: `Error getting clients for each class`});
+    })
+})
+
+router.post('/newclass', (req,res) => {
+    
 })
 
 
