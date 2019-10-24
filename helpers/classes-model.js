@@ -4,12 +4,19 @@ module.exports = {
     getAll,
     add,
     findById,
-    findBy
+    findBy,
+    getAvailable
 }
 
 function getAll(){
     return db('classes')
         .select('id', 'instructor_id', 'name', 'type', 'start_time', 'duration', 'intensity', 'location', 'max_size')
+}
+
+function getAvailable(){
+    return db('classes')
+        .select('classes.id', 'instructors.username as instructor', 'name', 'type', 'start_time', 'duration', 'intensity', 'location', 'max_size')
+        .join('instructors', 'instructors.id', 'classes.instructor_id')
 }
 
 async function add(newClass) {
@@ -27,3 +34,14 @@ function findById(id) {
 function findBy(filter){
     return db('classes').where(filter).first();
 }
+
+
+
+
+/* 
+function getAvailable(){
+    return db('classes')
+        .select('classes.id', 'instructors.username as instructor', 'name', 'type', 'start_time', 'duration', 'intensity', 'location', 'max_size')
+        .join('instructors', 'instructors.id', 'classes.instructor_id')
+}
+*/

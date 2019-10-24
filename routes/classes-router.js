@@ -17,6 +17,17 @@ router.get('/', (req,res) => {
         })
 })
 
+router.get('/available', (req,res) => {
+    Classes.getAvailable()
+    .then(allClasses => {
+        res.status(200).json(allClasses)
+    })
+    .catch(error => {
+        console.log(error)
+        res.status(500).json({error: `You are not allowed to see this content`});
+    })
+})
+
 router.post('/', (req,res) => {
     postClass = req.body
     Classes.add(postClass)
