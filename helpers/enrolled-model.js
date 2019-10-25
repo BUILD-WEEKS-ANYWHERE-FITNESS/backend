@@ -11,8 +11,8 @@ function clientsEnrolled(){
         .join('classes', 'enrolled.class_id','classes.id')
         .leftJoin('clients', 'enrolled.client_id','clients.id')
         .leftJoin('instructors', 'classes.instructor_id', 'instructors.id')
-        .count('client_id as atendees')
-        .groupBy('class_id')
+        .count('enrolled.client_id as atendees')
+        .groupBy('enrolled.class_id')
 }
 
 function classwithClients() {
@@ -21,7 +21,7 @@ function classwithClients() {
     .join('enrolled', 'enrolled.class_id', 'classes.id')
     .join('instructors', 'classes.instructor_id', 'instructors.id')
     .join('clients', 'clients.id', 'enrolled.client_id')
-    .count('client_id as clients_attending')
+    .count('enrolled.client_id as clients_attending')
     .groupBy('classes.id')
 }
 
