@@ -22,6 +22,6 @@ function classwithClients() {
     .join('instructors', 'classes.instructor_id', 'instructors.id')
     .join('clients', 'clients.id', 'enrolled.client_id')
     .count('client_id as clients_attending')
-    .groupBy('class_id')
+    .groupBy('classes.id')
 }
 
