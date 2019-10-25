@@ -37,7 +37,7 @@ router.get('/enrollment', (req,res) => {
     })
     .catch(error => {
         console.log(error)
-        res.status(500).json({error: `Error getting clients for each class`});
+        res.status(500).json({message: `Error getting clients for each class`, error:error.message});
     })
 })
 
