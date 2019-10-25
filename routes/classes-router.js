@@ -31,7 +31,7 @@ router.post('/', (req,res) => {
 })
 
 router.get('/enrollment', (req,res) => {
-    Enrolled.clientsEnrolled()
+    Enrolled.classwithClients()
     .then(c => {
         res.status(201).json(c)
     })
