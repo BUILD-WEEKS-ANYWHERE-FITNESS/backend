@@ -18,12 +18,12 @@ function clientsEnrolled(){
 
 function classwithClients() {
     return db('classes')
-    .select('classes.id', 'instructors.username as instructor', 'classes.name', 'classes.type', 'classes.start_time', 'classes.duration', 'classes.intensity', 'classes.location', 'classes.max_size')
+    .select('classes.id', 'instructors.username as instructor', 'classes.name', 'classes.type', 'classes.start_time', 'classes.duration', 'classes.intensity', 'classes.location', 'classes.max_size', db.raw('COALESCE(COUNT(enrolled.client_id as atendees), 0)'))
     .join('enrolled', 'enrolled.class_id', 'classes.id')
     .join('instructors', 'classes.instructor_id', 'instructors.id')
     .join('clients', 'clients.id', 'enrolled.client_id')
     // .count('enrolled.client_id as clients_attending')
-    .raw('COALESCE(COUNT(enrolled.client_id as atendees), 0)')
+    // .raw('COALESCE(COUNT(enrolled.client_id as atendees), 0)')
     .groupBy('classes.id')
 }
 
